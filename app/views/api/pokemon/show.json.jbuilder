@@ -1,2 +1,4 @@
-json.extract! @pokemon, :name, :attack, :defense, :poke_type, :moves, :image_url
-json.items @pokemon.items, :image_url
+json.extract! @pokemon, :id, :name, :attack, :defense, :image_url,
+  :moves, :poke_type
+json.items @pokemon.items, :id, :name, :pokemon_id, :price,
+  :happiness, :image_url
