@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class PokemonDetail extends React.Component {
 
@@ -11,28 +12,32 @@ class PokemonDetail extends React.Component {
   }
 
   render() {
-    let moves = this.props.pokemonDetail.moves;
+    let details = this.props.pokemonDetail;
+    let moves = details.moves;
     if (moves) {
       moves = moves.join(", ");
     }
 
-    let items = this.props.pokemonDetail.items;
+    let items = details.items;
     if (items) {
       items = items.map((item, idx) => (
-        <img key={idx} src={item.image_url} />
+        <Link key={idx} to={`/pokemon/${details.id}/items/${idx}`}>
+          <img src={item.image_url} />
+        </Link>
       ));
     }
+
     return (
       <div>
-        <img src={this.props.pokemonDetail.image_url} />
+        <img src={details.image_url} />
         <ul>
-          <li>{this.props.pokemonDetail.name}</li>
-          <li>Type: {this.props.pokemonDetail.poke_type}</li>
-          <li>Attack: {this.props.pokemonDetail.attack}</li>
-          <li>Defense: {this.props.pokemonDetail.defense}</li>
+          <li>{details.name}</li>
+          <li>Type: {details.poke_type}</li>
+          <li>Attack: {details.attack}</li>
+          <li>Defense: {details.defense}</li>
           <li>Moves: {moves}</li>
           <li>Items: {items}</li>
-
+          <span>{this.props.children}</span>
         </ul>
       </div>
     );
