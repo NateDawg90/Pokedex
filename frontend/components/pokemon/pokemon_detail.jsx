@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 
 class PokemonDetail extends React.Component {
-
   componentDidMount() {
     this.props.requestSinglePokemon(this.props.params.pokemonId);
   }

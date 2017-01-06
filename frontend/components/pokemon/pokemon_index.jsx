@@ -14,10 +14,10 @@ class PokemonIndex extends React.Component {
 
     return (
       <div>
+        <span>{this.props.children}</span>
         <ul>
           {allPokemon}
         </ul>
-        <span>{this.props.children}</span>
       </div>
     );
   }
